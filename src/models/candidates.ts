@@ -10,7 +10,7 @@ import {
   collection,
   DocumentData,
   onSnapshot,
-  Unsubscribe,
+  orderBy,
   query,
   QueryDocumentSnapshot,
   DocumentSnapshot,
@@ -34,7 +34,8 @@ export const candidateConverter = {
 export function useCandidates() {
   const [candidates, setCandidates] = useState<Candidate[]>([]);
   const colWithConverter = candidatesCollection.withConverter(candidateConverter);
-  const q = query(colWithConverter);
+  const sortFromLatestCreatedAt = orderBy("created_at", "desc");
+  const q = query(colWithConverter, sortFromLatestCreatedAt);
 
   const syncCandidates = useCallback((snapshot: QuerySnapshot<Candidate>) => {
     if (snapshot.docs.length) {
