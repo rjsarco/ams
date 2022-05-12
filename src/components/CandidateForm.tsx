@@ -45,6 +45,10 @@ function CandidateForm() {
           <input type="email" name="email" required onChange={onChange} value={candidate.email}/>
         </label>
         <label>
+          Age
+          <input type="number" name="age" required onChange={onChange} value={candidate.interview_score}/>
+        </label>
+        <label>
           Interview Score
           <input type="number" name="interview_score" required onChange={onChange} value={candidate.interview_score}/>
         </label>
